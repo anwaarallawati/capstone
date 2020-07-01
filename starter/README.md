@@ -2,11 +2,11 @@
 ## The Casting Agency models a company that is responsible for creating movies and managing and assigning actors to those movies. You are an Executive Producer within the company and are creating a system to simplify and streamline your process.
 
 ## Models:
-- Movies with attributes title and release date
-- Actors with attributes name, age and gender
+- Movies with attributes title and release date - - DONE 
+- Actors with attributes name, age and gender - - DONE 
 
 ## Endpoints:
-- GET /actors and /movies
+- GET /actors and /movies - - DONE 
 - DELETE /actors/ and /movies/
 - POST /actors and /movies and
 - PATCH /actors/ and /movies/
