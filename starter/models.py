@@ -22,6 +22,7 @@ class Movie(db.Model):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     release_date = db.Column(db.DateTime())
+    actors = db.relationship('Movie_Actor_relation', cascade="all, delete-orphan", backref='movie', lazy=True)
 
     def __init__(self, title, release_date):
         self.title = title
@@ -42,7 +43,8 @@ class Movie(db.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'release_date' : self.release_date
+            'release_date' : self.release_date,
+            'actors': [actor.id for actor in self.actors]
         }
 
 
@@ -53,6 +55,7 @@ class Actor(db.Model):
     name = Column(String)
     age = Column(Integer)
     gender = Column(String)
+    movies = db.relationship('Movie_Actor_relation', cascade="all, delete-orphan", backref='actor', lazy=True)
 
     def __init__(self, name, age, gender):
         self.name = name
@@ -75,6 +78,13 @@ class Actor(db.Model):
             'id': self.id,
             'name': self.name,
             'age' : self.age, 
-            'gender' : self.gender
+            'gender' : self.gender,
+            'movies': [movie.id for movie in self.movies]
         }
 
+
+class Movie_Actor_relation(db.Model):
+    __tablename__ = 'movie_actor_relation'
+    id = db.Column(db.Integer, primary_key=True)
+    movie_id = db.Column(db.Integer, db.ForeignKey('movie.id',ondelete="CASCADE"), nullable=False)
+    actor_id = db.Column(db.Integer, db.ForeignKey('actor.id',ondelete="CASCADE"), nullable=False)

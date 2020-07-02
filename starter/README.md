@@ -4,7 +4,7 @@
 ## Models:
 - Movies with attributes title and release date - - DONE 
 - Actors with attributes name, age and gender - - DONE 
-- Relation between Movies & Actors - - 
+- Relation between Movies & Actors - - DONE 
 
 ## Endpoints:
 - GET /actors and /movies - - DONE 
@@ -12,7 +12,7 @@
 - POST /actors and /movies - - DONE 
 - PATCH /actors/ and /movies/ - - DONE 
 
-## Roles:
+## Roles: 
 - Casting Assistant
     - Can view actors and movies
 - Casting Director
@@ -23,7 +23,15 @@
     - All permissions a Casting Director has and…
     - Add or delete a movie from the database
 
-## Tests:
-- One test for success behavior of each endpoint
-- One test for error behavior of each endpoint
+## Tests: (one remaining for RBAC)
+- One test for success behavior of each endpoint - - DONE 
+- One test for error behavior of each endpoint - - DONE 
 - At least two tests of RBAC for each role
+
+## Authorizations: 
+- Add Auth to app.py 
+- create auth.py 
+- add auth to test_app.py
+
+## Others: 
+- update README file 
