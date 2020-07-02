@@ -112,9 +112,13 @@ def patch_actors(actor_id):
     abort(404)
 
   body = request.get_json()
-  actor.name = body.get('name',None)
-  actor.age = body.get('age',None)
-  actor.gender = body.get('gender',None)
+
+  if 'name' in body:
+    actor.name = body.get('name',None)
+  if 'age' in body:
+    actor.age = body.get('age',None)
+  if 'gender' in body:
+    actor.gender = body.get('gender',None)
 
   try:
     actor.update()
@@ -193,15 +197,15 @@ def post_movies():
     release_date = release_date
   )
 
-  try:
-    movie.insert()
+  # try:
+  movie.insert()
 
-    response = {
-      "success": True,
-      "movie": movie.format()
-    }
-  except:
-    abort(422) 
+  response = {
+    "success": True,
+    "movie": movie.format()
+  }
+  # except:
+  #   abort(422) 
 
   return jsonify(response)
 
@@ -217,8 +221,10 @@ def patch_movies(movie_id):
     abort(404)
 
   body = request.get_json()
-  movie.title = body.get('title',None)
-  movie.release_date = body.get('release_date',None)
+  if 'title' in body:
+    movie.title = body.get('title',None)
+  if 'release_date' in body:
+    movie.release_date = body.get('release_date',None)
 
   try:
     movie.update()
