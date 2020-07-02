@@ -4,12 +4,13 @@
 ## Models:
 - Movies with attributes title and release date - - DONE 
 - Actors with attributes name, age and gender - - DONE 
+- Relation between Movies & Actors - - 
 
 ## Endpoints:
 - GET /actors and /movies - - DONE 
-- DELETE /actors/ and /movies/
-- POST /actors and /movies and
-- PATCH /actors/ and /movies/
+- DELETE /actors/ and /movies/ - - DONE 
+- POST /actors and /movies - - DONE 
+- PATCH /actors/ and /movies/ - - DONE 
 
 ## Roles:
 - Casting Assistant
