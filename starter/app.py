@@ -23,8 +23,8 @@ def create_app(test_config=None):
   #-----------------------------# 
 
   @app.route('/actors')
-  # @requires_auth('get:actors')
-  def get_actors():
+  @requires_auth('get:actors')
+  def get_actors(payload):
     
     actors = Actor.query.order_by(Actor.id).all()
 
@@ -48,7 +48,8 @@ def create_app(test_config=None):
   #-----------------------------# 
 
   @app.route('/actors/<int:actor_id>', methods=['DELETE'])
-  def delete_actors(actor_id):
+  @requires_auth('delete:actors')
+  def delete_actors(payload, actor_id):
     actor = Actor.query.filter(Actor.id == actor_id).first()
 
     if actor is None:
@@ -70,7 +71,8 @@ def create_app(test_config=None):
   #-----------------------------# 
 
   @app.route('/actors', methods=['POST'])
-  def post_actors():
+  @requires_auth('post:actors')
+  def post_actors(payload):
     body = request.get_json()
     name = body.get('name',None)
     age = body.get('age',None)
@@ -99,7 +101,8 @@ def create_app(test_config=None):
   #-----------------------------# 
 
   @app.route('/actors/<int:actor_id>', methods=['PATCH'])
-  def patch_actors(actor_id):
+  @requires_auth('patch:actors')
+  def patch_actors(payload, actor_id):
     actor = Actor.query.filter(Actor.id == actor_id).first()
 
     if actor is None:
@@ -134,7 +137,8 @@ def create_app(test_config=None):
   #-----------------------------# 
 
   @app.route('/movies')
-  def get_movies():
+  @requires_auth('get:movies')
+  def get_movies(payload):
 
     movies = Movie.query.order_by(Movie.id).all()
 
@@ -157,7 +161,8 @@ def create_app(test_config=None):
   #-----------------------------# 
 
   @app.route('/movies/<int:movie_id>', methods=['DELETE'])
-  def delete_movies(movie_id):
+  @requires_auth('delete:movies')
+  def delete_movies(payload, movie_id):
     movie = Movie.query.filter(Movie.id == movie_id).first()
     
     if movie is None:
@@ -181,7 +186,8 @@ def create_app(test_config=None):
   #-----------------------------# 
 
   @app.route('/movies', methods=['POST'])
-  def post_movies():
+  @requires_auth('post:movies')
+  def post_movies(payload):
     body = request.get_json()
     title = body.get('title',None)
     release_date = body.get('release_date',None)
@@ -208,7 +214,8 @@ def create_app(test_config=None):
   #-----------------------------# 
 
   @app.route('/movies/<int:movie_id>', methods=['PATCH'])
-  def patch_movies(movie_id):
+  @requires_auth('patch:movies')
+  def patch_movies(payload, movie_id):
     movie = Movie.query.filter(Movie.id == movie_id).first()
 
     if movie is None:

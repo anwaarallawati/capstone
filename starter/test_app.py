@@ -18,16 +18,6 @@ class CapstoneTestCases(unittest.TestCase):
             'localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
 
-        self.first_actor = {'name' : 'Actor 1',
-                            'age' : 30,
-                            'gender' : 'F'
-                            }
-
-        self.first_movie = {'title' : 'Movie 1',
-                            'release_date' : '2020-03-01'
-                            }
-          
-
         # binds the app to the current context
         with self.app.app_context():
             self.db = SQLAlchemy()

@@ -26,11 +26,11 @@
 ## Tests: (one remaining for RBAC)
 - One test for success behavior of each endpoint - - DONE 
 - One test for error behavior of each endpoint - - DONE 
-- At least two tests of RBAC for each role
+- At least two tests of RBAC for each role - - 
 
-## Authorizations: 
-- Add Auth to app.py 
-- create auth.py 
+## Authorizations: (one remaining for test.py)
+- Add Auth to app.py - - DONE
+- create auth.py - - DONE
 - add auth to test_app.py
 
 ## Others: 
