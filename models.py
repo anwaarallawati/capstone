@@ -9,6 +9,7 @@ database_path = "postgres://ozpvkhqfsyxrld:cbc327f695b5788279d0b76f15d5b105704b3
 
 db = SQLAlchemy()
 
+
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -23,7 +24,11 @@ class Movie(db.Model):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     release_date = db.Column(db.DateTime())
-    actors = db.relationship('Movie_Actor_relation', cascade="all, delete-orphan", backref='movie', lazy=True)
+    actors = db.relationship(
+        'Movie_Actor_relation',
+        cascade="all, delete-orphan",
+        backref='movie',
+        lazy=True)
 
     def __init__(self, title, release_date):
         self.title = title
@@ -38,13 +43,13 @@ class Movie(db.Model):
 
     def delete(self):
         db.session.delete(self)
-        db.session.commit()    
+        db.session.commit()
 
     def format(self):
         return {
             'id': self.id,
             'title': self.title,
-            'release_date' : self.release_date,
+            'release_date': self.release_date,
             'actors': [actor.id for actor in self.actors]
         }
 
@@ -56,11 +61,15 @@ class Actor(db.Model):
     name = Column(String)
     age = Column(Integer)
     gender = Column(String)
-    movies = db.relationship('Movie_Actor_relation', cascade="all, delete-orphan", backref='actor', lazy=True)
+    movies = db.relationship(
+        'Movie_Actor_relation',
+        cascade="all, delete-orphan",
+        backref='actor',
+        lazy=True)
 
     def __init__(self, name, age, gender):
         self.name = name
-        self.age = age 
+        self.age = age
         self.gender = gender
 
     def insert(self):
@@ -78,8 +87,8 @@ class Actor(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'age' : self.age, 
-            'gender' : self.gender,
+            'age': self.age,
+            'gender': self.gender,
             'movies': [movie.id for movie in self.movies]
         }
 
@@ -87,5 +96,15 @@ class Actor(db.Model):
 class Movie_Actor_relation(db.Model):
     __tablename__ = 'movie_actor_relation'
     id = db.Column(db.Integer, primary_key=True)
-    movie_id = db.Column(db.Integer, db.ForeignKey('movie.id',ondelete="CASCADE"), nullable=False)
-    actor_id = db.Column(db.Integer, db.ForeignKey('actor.id',ondelete="CASCADE"), nullable=False)
+    movie_id = db.Column(
+        db.Integer,
+        db.ForeignKey(
+            'movie.id',
+            ondelete="CASCADE"),
+        nullable=False)
+    actor_id = db.Column(
+        db.Integer,
+        db.ForeignKey(
+            'actor.id',
+            ondelete="CASCADE"),
+        nullable=False)
