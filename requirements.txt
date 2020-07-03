@@ -10,7 +10,7 @@ certifi==2020.4.5.2
 Click==7.0
 colorama==0.4.3
 docutils==0.15.2
-ecdsa==0.13.2
+ecdsa==0.13.3
 entrypoints==0.3
 flake8==3.7.9
 Flask==1.0.2
