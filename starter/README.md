@@ -23,15 +23,34 @@
     - All permissions a Casting Director has and…
     - Add or delete a movie from the database
 
-## Tests: (one remaining for RBAC)
+## Tests: 
 - One test for success behavior of each endpoint - - DONE 
 - One test for error behavior of each endpoint - - DONE 
-- At least two tests of RBAC for each role - - 
+- At least two tests of RBAC for each role - - DONE
 
-## Authorizations: (one remaining for test.py)
+## Authorizations: 
 - Add Auth to app.py - - DONE
 - create auth.py - - DONE
-- add auth to test_app.py
+- add auth to test_app.py - - DONE
+
+
+
 
 ## Others: 
-- update README file 
+- Auth0 is set up and running All required configuration settings are included in a bash file which export:
+    - The Auth0 Domain Name
+    - The JWT code signing secret
+    - The Auth0 Client ID
+
+- Deployment
+    - API is hosted live via Heroku
+    - URL is provided in project README
+    - API can be accessed by URL and requires authentication
+
+## README update: 
+- roles and permissions are clearly defined in the project README
+- Heroku URL is provided in project README
+- Motivation for project
+- Project dependencies, local development and hosting instructions,
+- Detailed instructions for scripts to install any project dependencies, and to run the development server.
+- Documentation of API behavior and RBAC controls

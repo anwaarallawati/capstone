@@ -53,7 +53,8 @@ class CapstoneTestCases(unittest.TestCase):
         pass
 
 #----------------------------------------# 
-# The endpoints test are performed with the executive producer role since it has all the permissions 
+# The endpoints test 1-8 are performed with the executive producer role since it has all the permissions 
+# Testing the other roles are performed in tests 9-12 
 #----------------------------------------# 
 # (1) successful GET endpoint tests
 #----------------------------------------# 
@@ -246,14 +247,14 @@ class CapstoneTestCases(unittest.TestCase):
 # (9) successful GET endpoint tests with Role casting assistant 
 #----------------------------------------#   
 
-    def test_get_actors_successful(self):
+    def test_get_actors_successful_casting_assistant(self):
         res = self.client().get('/actors', headers=self.auth_casting_assistant)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
         self.assertTrue(len(data['actors']))
 
-    def test_get_movies_successful(self):
+    def test_get_movies_successful_casting_assistant(self):
         res = self.client().get('/movies', headers=self.auth_casting_assistant)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
@@ -261,22 +262,71 @@ class CapstoneTestCases(unittest.TestCase):
         self.assertTrue(len(data['movies']))
 
 #----------------------------------------# 
-# (10) successful GET endpoint tests with Role casting director 
+# (10) not successful POST endpoint tests with Role casting assistant 
 #----------------------------------------#   
 
-    def test_get_actors_successful(self):
+    def test_post_actors_not_successful_casting_assistant(self):
+        res = self.client().post('/actors',
+            json={
+                'name' : 'Actor 1',
+                'age' : 30,
+                'gender' : 'F'
+                }, headers=self.auth_casting_assistant)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 401)
+        self.assertFalse(data['success'])
+
+#----------------------------------------# 
+# (12) successful GET endpoint tests with Role casting director 
+#----------------------------------------#   
+
+    def test_get_actors_successful_casting_director(self):
         res = self.client().get('/actors', headers=self.auth_casting_director)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
         self.assertTrue(len(data['actors']))
 
-    def test_get_movies_successful(self):
+    def test_get_movies_successful_casting_director(self):
         res = self.client().get('/movies', headers=self.auth_casting_director)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
         self.assertTrue(len(data['movies']))
+
+
+#----------------------------------------# 
+# (12) successful POST acotr endpoint tests with Role casting director 
+#----------------------------------------#   
+
+    def test_post_actors_successful_casting_director(self):
+        res = self.client().post('/actors',
+            json={
+                'name' : 'Actor 1',
+                'age' : 30,
+                'gender' : 'F'
+                }, headers=self.auth_casting_director)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(data['success'])
+        self.assertTrue(len(data['actor']))
+
+#----------------------------------------# 
+# (12) not successful POST movie endpoint tests with Role casting director 
+#----------------------------------------#   
+
+    def test_post_movies_not_successful_casting_director(self):
+        res = self.client().post('/movies',
+            json={
+                'title' : 'Movie 1',
+                'release_date' : '2020-03-01'
+                }, headers=self.auth_casting_director)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 401)
+        self.assertFalse(data['success'])
 
 #----------------------------------------#  
 # END of tests 

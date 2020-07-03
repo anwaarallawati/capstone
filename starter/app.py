@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import json
 from models import setup_db, Movie, Actor
-from flask_migrate import Migrate
 from auth import AuthError, requires_auth
 
 def create_app(test_config=None):
@@ -13,7 +12,6 @@ def create_app(test_config=None):
   setup_db(app)
   db = SQLAlchemy(app)
   CORS(app)
-  migrate = Migrate(app, db)
 
   #------------------------------------------------------------------------------------------#  
 
@@ -282,6 +280,14 @@ def create_app(test_config=None):
           "error": 500,
           "message": " Internal Server Error"
       }), 500  
+
+  @app.errorhandler(AuthError)
+  def unprocessable(error):
+      return jsonify({
+          "success": False,
+          "error": error.status_code,
+          "message": error.error['description']
+      }), error.status_code
 
   #------------------------------------------------------------------------------------------#  
 
