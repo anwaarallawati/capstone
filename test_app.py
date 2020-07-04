@@ -13,10 +13,6 @@ auth0_tokens = {
     "executive_producer": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im1WZWtoZHdpMFRTb2NTWC1rcUNKWiJ9.eyJpc3MiOiJodHRwczovL2Rldi1hbnctOTEuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlZmY5ODJkM2UwZGU4MDAxMzk3MDI3NiIsImF1ZCI6ImNhcHN0b25lX2FwaSIsImlhdCI6MTU5MzgyMDYxNSwiZXhwIjoxNTkzOTA3MDE1LCJhenAiOiIwcVRCdjdkTGgxYUJiV1JFcFAxQ2t4QkhHMmswMHRaNSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.d3hDGIoUPIZ9s65m7tzOJm5n4fblCAMnpqEH8Qr_-3nals4H9hf_DKgyj0_dFbKZeKMT0LJmTPeR__U23UbIi-UEe0Tug7KXk_Mc373VXWMJ20-q7nTdRafG3gxw5ctO5j8u61-eFGvlrHUukKImnAd_rr2bHIz0HNs3mio9ZAtJNcqbxvpTl3-3-YccsHpjukjHRVpMgad710RHWFXfvGNY91plxdiYT3inpksrIovlmgV91dlVlnkJELamA08QUxkIckKt4HdWHhan5YHqFWaWUrRKWPuHaQuXZfF6RfAvrWDZcU40ns_321VbCvK45CbS6e80Mqk5Qe23yFyGpA"
 }
 
-casting_assistant = os.environ.get('casting_assistant')
-casting_director = os.environ.get('casting_director')
-executive_producer = os.environ.get('executive_producer')
-
 
 def headers(token):
     response = {
@@ -36,12 +32,9 @@ class CapstoneTestCases(unittest.TestCase):
         self.database_path = "postgres://{}/{}".format(
             'localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
-        self.auth_header_executive = headers(executive_producer)
-        self.auth_casting_assistant = headers(casting_assistant)
-        self.auth_casting_director = headers(casting_director)
-        # self.auth_header_executive = headers(auth0_tokens["executive_producer"])
-        # self.auth_casting_assistant = headers(auth0_tokens["casting_assistant"])
-        # self.auth_casting_director = headers(auth0_tokens["casting_director"])
+        self.auth_header_executive = headers(auth0_tokens["executive_producer"])
+        self.auth_casting_assistant = headers(auth0_tokens["casting_assistant"])
+        self.auth_casting_director = headers(auth0_tokens["casting_director"])
 
         # binds the app to the current context
         with self.app.app_context():
