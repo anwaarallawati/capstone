@@ -62,7 +62,7 @@ Setting the `FLASK_APP` variable to `app.py` directs flask to app file to find t
 
 ### To use the deployed application on Heroku 
 The server is up and running on heroku, you can use it using the following URL: 
-[Heroku-deployment](https://capstone-anwaar.herokuapp.com)
+https://capstone-anwaar.herokuapp.com
 
 ## Error Handling 
 
