@@ -294,6 +294,7 @@ This API handles errors of types:
 dropdb capstone_test
 createdb capstone_test
 psql capstone_test < capstone_sql.psql
+source setup.sh
 python test_app.py
 ```
 
