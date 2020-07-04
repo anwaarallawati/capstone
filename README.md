@@ -100,9 +100,9 @@ This API handles errors of types:
     * Request Arguments: None
     * Returns a single object, actors, that contains a string value corresponding to a key id 
 
-    * Sample request : 
+* Sample request : 
 `curl https://capstone-anwaar.herokuapp.com/actors -H "Authorization: Bearer ${token}" | jq` 
-    * Sample response: 
+* Sample response: 
 ```
 {
     "actors": [
@@ -123,9 +123,9 @@ This API handles errors of types:
 ### POST "/actors"
 
 * General 
-** Creates a new record for an actor, passes the arguments as a JSON object  
-** Request Arguments: name, age and gender 
-** Returns a single object, the newly created actor 
+    * Creates a new record for an actor, passes the arguments as a JSON object  
+    * Request Arguments: name, age and gender 
+    * Returns a single object, the newly created actor 
 
 * Sample request: `curl https://capstone-anwaar.herokuapp.com/actors -X POST -H "Authorization: Bearer ${token}" -H "Content-Type:application/json" -d '{"name":"Actor 1", "age":30, "gender":"F"}' | jq` 
 
@@ -146,9 +146,9 @@ This API handles errors of types:
 ### PATCH "/actors/<actor_id>"
 
 * General 
-** Updates an existing record for an actor, passes the arguments as a JSON object  
-** Request Arguments: name, age and gender (one or more)
-** Returns a single object, the updated actor 
+    * Updates an existing record for an actor, passes the arguments as a JSON object  
+    * Request Arguments: name, age and gender (one or more)
+    * Returns a single object, the updated actor 
 
 * Sample request: `curl https://capstone-anwaar.herokuapp.com/actors/6 -X PATCH -H "Authorization: Bearer ${token}" -H "Content-Type:application/json" -d '{"name":"Actor 6"}' | jq` 
 
@@ -169,9 +169,9 @@ This API handles errors of types:
 ### DELETE "/actors/<actor_id>"
 
 * General 
-** Deletes an existing record for an actor, passes the arguments as a JSON object  
-** Request Arguments: None
-** Returns a single object, the id of deleted actor 
+    * Deletes an existing record for an actor, passes the arguments as a JSON object  
+    * Request Arguments: None
+    * Returns a single object, the id of deleted actor 
 
 * Sample request: `curl https://capstone-anwaar.herokuapp.com/actors/6 -X DELETE -H "Authorization: Bearer ${token}" -H "Content-Type:application/json" | jq` 
 
@@ -186,9 +186,9 @@ This API handles errors of types:
 ### GET "/movies"
 
 * General 
-** Fetches all the movies 
-** Request Arguments: None
-** Returns a single object, movies, that contains a string value corresponding to a key id 
+    * Fetches all the movies 
+    * Request Arguments: None
+    * Returns a single object, movies, that contains a string value corresponding to a key id 
 
 * Sample request : 
 `curl https://capstone-anwaar.herokuapp.com/movies -H "Authorization: Bearer ${token}" | jq` 
@@ -213,9 +213,9 @@ This API handles errors of types:
 ### POST "/movies"
 
 * General 
-** Creates a new record for a movie, passes the arguments as a JSON object  
-** Request Arguments: title and release date 
-** Returns a single object, the newly created movie  
+    * Creates a new record for a movie, passes the arguments as a JSON object  
+    * Request Arguments: title and release date 
+    * Returns a single object, the newly created movie  
 
 * Sample request: `curl https://capstone-anwaar.herokuapp.com/movies -X POST -H "Authorization: Bearer ${token}" -H "Content-Type:application/json" -d '{"title" : "Movie 1","release_date" : "2020-03-01"}' | jq` 
 
@@ -235,9 +235,9 @@ This API handles errors of types:
 ### PATCH "/movies/<movie_id>"
 
 * General 
-** Updates an existing record for a movie, passes the arguments as a JSON object  
-** Request Arguments: title and release date (one or more)
-** Returns a single object, the updated movie 
+    * Updates an existing record for a movie, passes the arguments as a JSON object  
+    * Request Arguments: title and release date (one or more)
+    * Returns a single object, the updated movie 
 
 * Sample request: `curl https://capstone-anwaar.herokuapp.com/movies/4 -X PATCH -H "Authorization: Bearer ${token}" -H "Content-Type:application/json" -d '{"title":"Movie 4"}' | jq` 
 
@@ -257,9 +257,9 @@ This API handles errors of types:
 ### DELETE "/movies/<movie_id>"
 
 * General 
-** Deletes an existing record for a movie, passes the arguments as a JSON object  
-** Request Arguments: None
-** Returns a single object, the id of deleted movie 
+    * Deletes an existing record for a movie, passes the arguments as a JSON object  
+    * Request Arguments: None
+    * Returns a single object, the id of deleted movie 
 
 * Sample request: `curl https://capstone-anwaar.herokuapp.com/movies/4 -X DELETE -H "Authorization: Bearer ${token}" -H "Content-Type:application/json" | jq` 
 
