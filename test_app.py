@@ -6,11 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from models import setup_db, Movie, Actor
 from app import create_app
 
-auth0_users = {
-    'casting_assistant@gmail.com': 'pass1234!',
-    'casting_director@gmail.com': 'pass1234!',
-    'executive_producer@gmail.com': 'pass1234!'
-}
 
 auth0_tokens = {
     "casting_assistant": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im1WZWtoZHdpMFRTb2NTWC1rcUNKWiJ9.eyJpc3MiOiJodHRwczovL2Rldi1hbnctOTEuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlZmY5N2RmOTI4ODJjMDAxMzViOGU3MiIsImF1ZCI6ImNhcHN0b25lX2FwaSIsImlhdCI6MTU5MzgyMDUzNywiZXhwIjoxNTkzOTA2OTM3LCJhenAiOiIwcVRCdjdkTGgxYUJiV1JFcFAxQ2t4QkhHMmswMHRaNSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiXX0.DCXRN9E4iHHi2Z_BV7pRrHwCDX10mqW5Zx4U8DOaTiDHqKAkJrNpUYEJAUYqR7NB7EuR0iWTNEOd3c-J7EseF-cH5VWFLxhuGUHYAkqIj3d9clRqJXqQdD0MVwMb0hYg45UJEDVKHyqlAXSaMKvxrv7q_mVRlomhD6Cx0vD7ayHfonUeiYHqQpdimxJtD448g1yWFStW8V2S15wfIYNPqZt_45YNBdyKvPkWV-s4cKNQd1KTNvzHYBXgRae19S4ZTyoTWH_jH1aTc8x1IJoJZ-pNgV9VJaV-0OnBmvm6MnNtUI9XnXWsMxpTMNVwCtcSi6QWVCGLKA0Uumny_cZ76g",
