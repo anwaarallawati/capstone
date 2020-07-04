@@ -201,21 +201,22 @@ class CapstoneTestCases(unittest.TestCase):
 
 #----------------------------------------#
 # (7) successful DELETE endpoint tests
+# Note: the id must be updated to an existing id 
 #----------------------------------------#
 
     def test_delete_actor_successful(self):
-        res = self.client().delete('/actors/5', headers=self.auth_header_executive)
+        res = self.client().delete('/actors/3', headers=self.auth_header_executive)
         data = json.loads(res.data)
-        actor = Actor.query.filter(Actor.id == 5).one_or_none()
+        actor = Actor.query.filter(Actor.id == 3).one_or_none()
 
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
         self.assertEqual(actor, None)
 
     def test_delete_movie_successful(self):
-        res = self.client().delete('/movies/5', headers=self.auth_header_executive)
+        res = self.client().delete('/movies/3', headers=self.auth_header_executive)
         data = json.loads(res.data)
-        movie = Movie.query.filter(Movie.id == 5).one_or_none()
+        movie = Movie.query.filter(Movie.id == 3).one_or_none()
 
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
