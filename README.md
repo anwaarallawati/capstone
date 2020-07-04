@@ -96,13 +96,13 @@ This API handles errors of types:
 ### GET "/actors" 
 * General 
 
-** Fetches all the actors 
-** Request Arguments: None
-** Returns a single object, actors, that contains a string value corresponding to a key id 
+    * Fetches all the actors 
+    * Request Arguments: None
+    * Returns a single object, actors, that contains a string value corresponding to a key id 
 
-* Sample request : 
+    * Sample request : 
 `curl https://capstone-anwaar.herokuapp.com/actors -H "Authorization: Bearer ${token}" | jq` 
-* Sample response: 
+    * Sample response: 
 ```
 {
     "actors": [
