@@ -67,11 +67,13 @@ https://capstone-anwaar.herokuapp.com
 ## Error Handling 
 
 Errors in this API are returned as JSON objects. They are formatted as: 
+```
 {
     "success" : False,
     "error" : 400,
     "message" : "Bad Request"
 }
+```
 
 This API handles errors of types: 
 - 400: Bad Request
