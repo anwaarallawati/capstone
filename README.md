@@ -95,6 +95,7 @@ This API handles errors of types:
 
 ### GET "/actors" 
 * General 
+
 ** Fetches all the actors 
 ** Request Arguments: None
 ** Returns a single object, actors, that contains a string value corresponding to a key id 
