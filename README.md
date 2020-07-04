@@ -51,6 +51,7 @@ From within the `capstones` directory first ensure you are working using your cr
 To run the server, execute:
 
 ```bash
+source setup.sh
 export FLASK_APP=app.py
 export FLASK_ENV=development
 flask run
