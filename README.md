@@ -1,5 +1,7 @@
 # Casting Agency Capstone Project 
 
+## Motivation
+
 This Casting Agency project is invested in creating a relationship between actors and the agency. It provides a backend to keep track of all the actors and every movie they are a part of. In addition it also provides a list of actors for each movie. 
 Moreover, it provides the functionality of creating new movies and adding new actors to the team! 
 There are different roles within this agency that includes Casting Assistants, Casting Directors and Executive Producers. 
