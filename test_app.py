@@ -200,23 +200,23 @@ class CapstoneTestCases(unittest.TestCase):
 # (7) successful DELETE endpoint tests
 #----------------------------------------#
 
-    # def test_delete_actor_successful(self):
-    #     res = self.client().delete('/actors/5', headers=self.auth_header_executive)
-    #     data = json.loads(res.data)
-    #     actor = Actor.query.filter(Actor.id == 5).one_or_none()
+    def test_delete_actor_successful(self):
+        res = self.client().delete('/actors/5', headers=self.auth_header_executive)
+        data = json.loads(res.data)
+        actor = Actor.query.filter(Actor.id == 5).one_or_none()
 
-    #     self.assertEqual(res.status_code, 200)
-    #     self.assertTrue(data['success'])
-    #     self.assertEqual(actor, None)
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(data['success'])
+        self.assertEqual(actor, None)
 
-    # def test_delete_movie_successful(self):
-    #     res = self.client().delete('/movies/5', headers=self.auth_header_executive)
-    #     data = json.loads(res.data)
-    #     movie = Movie.query.filter(Movie.id == 5).one_or_none()
+    def test_delete_movie_successful(self):
+        res = self.client().delete('/movies/5', headers=self.auth_header_executive)
+        data = json.loads(res.data)
+        movie = Movie.query.filter(Movie.id == 5).one_or_none()
 
-    #     self.assertEqual(res.status_code, 200)
-    #     self.assertTrue(data['success'])
-    #     self.assertEqual(movie, None)
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(data['success'])
+        self.assertEqual(movie, None)
 
 #----------------------------------------#
 # (8) not successful DELETE endpoint tests
