@@ -1,0 +1,276 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.1
+-- Dumped by pg_dump version 12.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: actor; Type: TABLE; Schema: public; Owner: Anwaar
+--
+
+CREATE TABLE public.actor (
+    id integer NOT NULL,
+    name character varying,
+    age integer,
+    gender character varying
+);
+
+
+ALTER TABLE public.actor OWNER TO "Anwaar";
+
+--
+-- Name: actor_id_seq; Type: SEQUENCE; Schema: public; Owner: Anwaar
+--
+
+CREATE SEQUENCE public.actor_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.actor_id_seq OWNER TO "Anwaar";
+
+--
+-- Name: actor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Anwaar
+--
+
+ALTER SEQUENCE public.actor_id_seq OWNED BY public.actor.id;
+
+
+--
+-- Name: alembic_version; Type: TABLE; Schema: public; Owner: Anwaar
+--
+
+CREATE TABLE public.alembic_version (
+    version_num character varying(32) NOT NULL
+);
+
+
+ALTER TABLE public.alembic_version OWNER TO "Anwaar";
+
+--
+-- Name: movie; Type: TABLE; Schema: public; Owner: Anwaar
+--
+
+CREATE TABLE public.movie (
+    id integer NOT NULL,
+    title character varying,
+    release_date timestamp without time zone
+);
+
+
+ALTER TABLE public.movie OWNER TO "Anwaar";
+
+--
+-- Name: movie_actor_relation; Type: TABLE; Schema: public; Owner: Anwaar
+--
+
+CREATE TABLE public.movie_actor_relation (
+    id integer NOT NULL,
+    movie_id integer NOT NULL,
+    actor_id integer NOT NULL
+);
+
+
+ALTER TABLE public.movie_actor_relation OWNER TO "Anwaar";
+
+--
+-- Name: movie_actor_relation_id_seq; Type: SEQUENCE; Schema: public; Owner: Anwaar
+--
+
+CREATE SEQUENCE public.movie_actor_relation_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.movie_actor_relation_id_seq OWNER TO "Anwaar";
+
+--
+-- Name: movie_actor_relation_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Anwaar
+--
+
+ALTER SEQUENCE public.movie_actor_relation_id_seq OWNED BY public.movie_actor_relation.id;
+
+
+--
+-- Name: movie_id_seq; Type: SEQUENCE; Schema: public; Owner: Anwaar
+--
+
+CREATE SEQUENCE public.movie_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.movie_id_seq OWNER TO "Anwaar";
+
+--
+-- Name: movie_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Anwaar
+--
+
+ALTER SEQUENCE public.movie_id_seq OWNED BY public.movie.id;
+
+
+--
+-- Name: actor id; Type: DEFAULT; Schema: public; Owner: Anwaar
+--
+
+ALTER TABLE ONLY public.actor ALTER COLUMN id SET DEFAULT nextval('public.actor_id_seq'::regclass);
+
+
+--
+-- Name: movie id; Type: DEFAULT; Schema: public; Owner: Anwaar
+--
+
+ALTER TABLE ONLY public.movie ALTER COLUMN id SET DEFAULT nextval('public.movie_id_seq'::regclass);
+
+
+--
+-- Name: movie_actor_relation id; Type: DEFAULT; Schema: public; Owner: Anwaar
+--
+
+ALTER TABLE ONLY public.movie_actor_relation ALTER COLUMN id SET DEFAULT nextval('public.movie_actor_relation_id_seq'::regclass);
+
+
+--
+-- Data for Name: actor; Type: TABLE DATA; Schema: public; Owner: Anwaar
+--
+
+COPY public.actor (id, name, age, gender) FROM stdin;
+1	Actor 1	21	M
+2	Actor 2	18	F
+3	Actor 3	34	F
+4	Actor 4	34	F
+\.
+
+
+--
+-- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: Anwaar
+--
+
+COPY public.alembic_version (version_num) FROM stdin;
+\.
+
+
+--
+-- Data for Name: movie; Type: TABLE DATA; Schema: public; Owner: Anwaar
+--
+
+COPY public.movie (id, title, release_date) FROM stdin;
+1	Movie 1	2020-08-15 00:00:00
+2	Movie 2	2020-07-01 00:00:00
+3	Movie 3	2020-10-30 00:00:00
+4	Movie 4	2020-10-30 00:00:00
+\.
+
+
+--
+-- Data for Name: movie_actor_relation; Type: TABLE DATA; Schema: public; Owner: Anwaar
+--
+
+COPY public.movie_actor_relation (id, movie_id, actor_id) FROM stdin;
+1	1	1
+2	1	2
+3	2	3
+\.
+
+
+--
+-- Name: actor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Anwaar
+--
+
+SELECT pg_catalog.setval('public.actor_id_seq', 4, true);
+
+
+--
+-- Name: movie_actor_relation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Anwaar
+--
+
+SELECT pg_catalog.setval('public.movie_actor_relation_id_seq', 1, false);
+
+
+--
+-- Name: movie_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Anwaar
+--
+
+SELECT pg_catalog.setval('public.movie_id_seq', 4, true);
+
+
+--
+-- Name: actor actor_pkey; Type: CONSTRAINT; Schema: public; Owner: Anwaar
+--
+
+ALTER TABLE ONLY public.actor
+    ADD CONSTRAINT actor_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: alembic_version alembic_version_pkc; Type: CONSTRAINT; Schema: public; Owner: Anwaar
+--
+
+ALTER TABLE ONLY public.alembic_version
+    ADD CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num);
+
+
+--
+-- Name: movie_actor_relation movie_actor_relation_pkey; Type: CONSTRAINT; Schema: public; Owner: Anwaar
+--
+
+ALTER TABLE ONLY public.movie_actor_relation
+    ADD CONSTRAINT movie_actor_relation_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: movie movie_pkey; Type: CONSTRAINT; Schema: public; Owner: Anwaar
+--
+
+ALTER TABLE ONLY public.movie
+    ADD CONSTRAINT movie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: movie_actor_relation movie_actor_relation_actor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Anwaar
+--
+
+ALTER TABLE ONLY public.movie_actor_relation
+    ADD CONSTRAINT movie_actor_relation_actor_id_fkey FOREIGN KEY (actor_id) REFERENCES public.actor(id) ON DELETE CASCADE;
+
+
+--
+-- Name: movie_actor_relation movie_actor_relation_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Anwaar
+--
+
+ALTER TABLE ONLY public.movie_actor_relation
+    ADD CONSTRAINT movie_actor_relation_movie_id_fkey FOREIGN KEY (movie_id) REFERENCES public.movie(id) ON DELETE CASCADE;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
