@@ -14,11 +14,11 @@ def create_app(test_config=None):
     db = SQLAlchemy(app)
     CORS(app)
 
-#---------------------------------------------
-# Actor ENDPOINTS
-#-----------------------------
-# (1) GET Actors endpoint
-#-----------------------------
+    # --------------------------------------------- #
+    # Actor ENDPOINTS
+    # ----------------------------- #
+    # (1) GET Actors endpoint
+    # ----------------------------- #
 
     @app.route('/actors')
     @requires_auth('get:actors')
@@ -41,9 +41,9 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
-    #-----------------------------#
+    # ----------------------------- #
     # (2) DELETE Actors endpoint
-    #-----------------------------#
+    # ----------------------------- #
 
     @app.route('/actors/<int:actor_id>', methods=['DELETE'])
     @requires_auth('delete:actors')
@@ -64,9 +64,9 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
-    #-----------------------------#
+    # ----------------------------- #
     # (3) POST Actors endpoint
-    #-----------------------------#
+    # ----------------------------- #
 
     @app.route('/actors', methods=['POST'])
     @requires_auth('post:actors')
@@ -94,9 +94,9 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
-    #-----------------------------#
+    # ----------------------------- #
     # (4) PATCH Actors endpoint
-    #-----------------------------#
+    # ----------------------------- #
 
     @app.route('/actors/<int:actor_id>', methods=['PATCH'])
     @requires_auth('patch:actors')
@@ -127,12 +127,12 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
-    #------------------------------------------------------------------------------------------#
+    # ---------------------------------------------- #
 
     # Movies ENDPOINTS
-    #-----------------------------#
+    # ----------------------------- #
     # (1) GET Movies endpoint
-    #-----------------------------#
+    # ----------------------------- #
 
     @app.route('/movies')
     @requires_auth('get:movies')
@@ -154,9 +154,9 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
-    #-----------------------------#
+    # ----------------------------- #
     # (2) DELETE Movies endpoint
-    #-----------------------------#
+    # ----------------------------- #
 
     @app.route('/movies/<int:movie_id>', methods=['DELETE'])
     @requires_auth('delete:movies')
@@ -179,9 +179,9 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
-    #-----------------------------#
+    # ----------------------------- #
     # (3) POST Movies endpoint
-    #-----------------------------#
+    # ----------------------------- #
 
     @app.route('/movies', methods=['POST'])
     @requires_auth('post:movies')
@@ -207,9 +207,9 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
-    #-----------------------------#
+    # ----------------------------- #
     # (4) PATCH Movies endpoint
-    #-----------------------------#
+    # ----------------------------- #
 
     @app.route('/movies/<int:movie_id>', methods=['PATCH'])
     @requires_auth('patch:movies')
@@ -237,9 +237,9 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
-    #-----------------------------#
+    # ----------------------------- #
     # (*) Error Handlers
-    #-----------------------------#
+    # ----------------------------- #
 
     @app.errorhandler(404)
     def not_found(error):
@@ -289,7 +289,7 @@ def create_app(test_config=None):
             "message": error.error['description']
         }), error.status_code
 
-    #------------------------------------------------------------------------------------------#
+    # --------------------------------------- #
 
     return app
 
