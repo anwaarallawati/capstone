@@ -14,12 +14,11 @@ def create_app(test_config=None):
     db = SQLAlchemy(app)
     CORS(app)
 
-    #------------------------------------------------------------------------------------------#
-
-    # Actor ENDPOINTS
-    #-----------------------------#
-    # (1) GET Actors endpoint
-    #-----------------------------#
+#---------------------------------------------
+# Actor ENDPOINTS
+#-----------------------------
+# (1) GET Actors endpoint
+#-----------------------------
 
     @app.route('/actors')
     @requires_auth('get:actors')
