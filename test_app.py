@@ -206,7 +206,7 @@ class CapstoneTestCases(unittest.TestCase):
 # ----------------------------------------#
 
     def test_delete_actor_successful(self):
-        res = self.client().delete('/actors/3',
+        res = self.client().delete('/actors/2',
                                    headers=self.auth_header_executive)
         data = json.loads(res.data)
         actor = Actor.query.filter(Actor.id == 3).one_or_none()
@@ -216,7 +216,7 @@ class CapstoneTestCases(unittest.TestCase):
         self.assertEqual(actor, None)
 
     def test_delete_movie_successful(self):
-        res = self.client().delete('/movies/3',
+        res = self.client().delete('/movies/2',
                                    headers=self.auth_header_executive)
         data = json.loads(res.data)
         movie = Movie.query.filter(Movie.id == 3).one_or_none()
