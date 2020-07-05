@@ -199,7 +199,7 @@ class CapstoneTestCases(unittest.TestCase):
 
 #----------------------------------------#
 # (7) successful DELETE endpoint tests
-# Note: the id must be updated to an existing id 
+# Note: the id must be updated to an existing id
 #----------------------------------------#
 
     def test_delete_actor_successful(self):
@@ -296,7 +296,6 @@ class CapstoneTestCases(unittest.TestCase):
 #----------------------------------------#
 # (12) successful POST acotr endpoint tests with Role casting director
 #----------------------------------------#
-
 
     def test_post_actors_successful_casting_director(self):
         res = self.client().post('/actors',
