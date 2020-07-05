@@ -149,7 +149,7 @@ class CapstoneTestCases(unittest.TestCase):
 # ----------------------------------------#
 
     def test_patch_actors_successful(self):
-        res = self.client().patch('/actors/3',
+        res = self.client().patch('/actors/2',
                                   json={
                                       'name': 'Actor 5',
                                       'age': 35,
@@ -162,7 +162,7 @@ class CapstoneTestCases(unittest.TestCase):
         self.assertTrue(data['actor'])
 
     def test_patch_movies_successful(self):
-        res = self.client().patch('/movies/3',
+        res = self.client().patch('/movies/2',
                                   json={
                                       'title': 'Movie 5',
                                       'release_date': '2015-03-01'
@@ -178,7 +178,7 @@ class CapstoneTestCases(unittest.TestCase):
 # ----------------------------------------#
 
     def test_patch_actors_not_successful(self):
-        res = self.client().patch('/actors/3',
+        res = self.client().patch('/actors/2',
                                   json={
                                       'name': 'Actor 5',
                                       'age': "invalid age",
@@ -190,7 +190,7 @@ class CapstoneTestCases(unittest.TestCase):
         self.assertFalse(data['success'])
 
     def test_patch_movies_not_successful(self):
-        res = self.client().patch('/movies/3',
+        res = self.client().patch('/movies/2',
                                   json={
                                       'title': 'Movie 5',
                                       'release_date': 'invalid date'
@@ -206,20 +206,20 @@ class CapstoneTestCases(unittest.TestCase):
 # ----------------------------------------#
 
     def test_delete_actor_successful(self):
-        res = self.client().delete('/actors/3',
+        res = self.client().delete('/actors/6',
                                    headers=self.auth_header_executive)
         data = json.loads(res.data)
-        actor = Actor.query.filter(Actor.id == 3).one_or_none()
+        actor = Actor.query.filter(Actor.id == 6).one_or_none()
 
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
         self.assertEqual(actor, None)
 
     def test_delete_movie_successful(self):
-        res = self.client().delete('/movies/3',
+        res = self.client().delete('/movies/6',
                                    headers=self.auth_header_executive)
         data = json.loads(res.data)
-        movie = Movie.query.filter(Movie.id == 3).one_or_none()
+        movie = Movie.query.filter(Movie.id == 6).one_or_none()
 
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
