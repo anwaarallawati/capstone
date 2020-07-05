@@ -10,11 +10,9 @@ casting_assistant = os.environ.get('casting_assistant')
 casting_director = os.environ.get('casting_director')
 executive_producer = os.environ.get('executive_producer')
 
-auth0_tokens = {
-    "casting_assistant": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im1WZWtoZHdpMFRTb2NTWC1rcUNKWiJ9.eyJpc3MiOiJodHRwczovL2Rldi1hbnctOTEuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlZmY5N2RmOTI4ODJjMDAxMzViOGU3MiIsImF1ZCI6ImNhcHN0b25lX2FwaSIsImlhdCI6MTU5MzkwMDQ0NCwiZXhwIjoxNTkzOTg2ODQ0LCJhenAiOiIwcVRCdjdkTGgxYUJiV1JFcFAxQ2t4QkhHMmswMHRaNSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiXX0.emZpeine11R-7JgFClbVoICGCD0bN_wltRNX5E4nnOFCdL1BSU_2Wetf1MJiMiBubZ2cQA0TuFXFpzB5F-XZpg5WRf0SKhNoabM_0uL9WgwYGPnznz6RO3tNP275BGqt1_UKbh_99oO1TasWw6dNs67fF1t8ET4wjQ3U27VxTBQuaho2viqXKBMGwF1pQ0_zwcPFWUtIeLnUIrk7DPfbfUsuVNuNsuWnVVBxTzj6nDLRrwAbElQJKY9nzynOMeEwRK3siWTrT5MN-gT7Qvqj1oYcAJ-d_GZRUW74bCG5DENZw_2P_kgY1vXQuVlJlIO7jTLik35LTpNhfHOEt1LmtQ",
-    "casting_director": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im1WZWtoZHdpMFRTb2NTWC1rcUNKWiJ9.eyJpc3MiOiJodHRwczovL2Rldi1hbnctOTEuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlZmY5ODBjZDQ0ZWQ4MDAxOTQ0NmZkYyIsImF1ZCI6ImNhcHN0b25lX2FwaSIsImlhdCI6MTU5MzkwMDU4NiwiZXhwIjoxNTkzOTg2OTg2LCJhenAiOiIwcVRCdjdkTGgxYUJiV1JFcFAxQ2t4QkhHMmswMHRaNSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiXX0.KY3oudlBsYVPA4FgXmr5W86DkVqZr93MkMpQpoQfWTY6tysnixDQOrO34-9VtWwdsxpMvbh43ZfgzqbB25iVsNGQwCIS404hSnVIPjpRC40LtZnnWwBO-wDHke1DuR0xeLwSJXeYLN0cCFrGV1gzO4ZfqzsUz2h11t_WXaM-qxrvgNH6fpNUIjGm2PD3qM8cIuE7Fn8MTvNbFiiu8VSl1eafowdaaGCfdqTu4ChNBmaIoCFIxT3ZZhwDuD9ByZKOsBsPPpxH4pr3S3I2Y3nO3Iuks4cwDC33LUhiY2DzYCfk1gx4aoWHFXpZ73BhBexGua_0ukTTzIv_wHjNOEeHQg",
-    "executive_producer": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im1WZWtoZHdpMFRTb2NTWC1rcUNKWiJ9.eyJpc3MiOiJodHRwczovL2Rldi1hbnctOTEuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlZmY5ODJkM2UwZGU4MDAxMzk3MDI3NiIsImF1ZCI6ImNhcHN0b25lX2FwaSIsImlhdCI6MTU5MzkwMDYyMCwiZXhwIjoxNTkzOTg3MDIwLCJhenAiOiIwcVRCdjdkTGgxYUJiV1JFcFAxQ2t4QkhHMmswMHRaNSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.WN0WJwAIm9ifiYX9BSguz9lHx5-cbv1U4QrJpFqek7wd0VxOH8NePyWyobKNxz5AXIY7A5C4ZtsG_PgBewnOanUPfC87GhnCfhAZ2vF6qXOA72F7bDj4resEApkZ1qftmFuBvL15wH79QPt3mKcpFAc21JhyngugHCi1Kw_Hgkj6SM1bMXVwLRGfa7D6bl27gUD9inX1_UJnYiSd_h723dU5wdHxQ8-GgeahWV-OxuGvhYBnbXfUbA7xuELi6JVFlw14UIrVld-WnXzUtsPKWsdit-3a1wOOp7CHDa5faEYFhvIwTXYqYt-ZDdKofANH6-wRqRsiYltYilRNvcnTrQ"
-}
+AUTH0_CLIENT_ID = os.environ.get('AUTH0_CLIENT_ID')
+AUTH0_CLIENT_SECRET = os.environ.get('AUTH0_CLIENT_SECRET')
+AUTH0_CALLBACK_URL = os.environ.get('AUTH0_CALLBACK_URL')
 
 
 def headers(token):
@@ -35,9 +33,9 @@ class CapstoneTestCases(unittest.TestCase):
         self.database_path = "postgres://{}/{}".format(
             'localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
-        self.auth_header_executive = headers(auth0_tokens["executive_producer"])
-        self.auth_casting_assistant = headers(auth0_tokens["casting_assistant"])
-        self.auth_casting_director = headers(auth0_tokens["casting_director"])
+        self.auth_header_executive = headers(executive_producer)
+        self.auth_casting_assistant = headers(casting_assistant)
+        self.auth_casting_director = headers(casting_director)
 
         # binds the app to the current context
         with self.app.app_context():
